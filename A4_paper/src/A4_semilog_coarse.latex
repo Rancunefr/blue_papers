@@ -60,9 +60,9 @@
     \draw[gray,line width=0.2pt] (\y,\ymin) -- (\y,\ymax);
 }
 %tracé encore plus épais tous les 5 cm
-\foreach \y in{0,5,...,\xmax}{
-    \draw[gray,thick] (\y,\ymin) -- (\y,\ymax);
-}
+%\foreach \y in{0,5,...,\xmax}{
+%    \draw[gray,thick] (\y,\ymin) -- (\y,\ymax);
+%}
      \fill (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
      \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
      \fill (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;

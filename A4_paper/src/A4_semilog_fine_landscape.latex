@@ -42,13 +42,13 @@
     };
     %tracé de la légende à côté des axes
     \foreach \x in {2,...,9}{
-    	    \coordinate (legende) at (\xmax,{(log10(\x)+\ee)*\heighta});
-	    \node at (legende) [right] {\tiny \x};
+    	    \coordinate (legende) at (\xmax+0.2,{(log10(\x)+\ee)*\heighta-0.2});
+	    \node at (legende) [right, rotate=90] {\tiny \x};
     };    
 };
 %tracé de la légende pour les puissances de 10
 \foreach \ee in{0,1,...,\nbdec}{
-    \node at (\xmax,{\ee*\heighta}) [right] {\scriptsize $10^\ee$};
+    \node at (\xmax+0.2,{\ee*\heighta-0.3}) [right, rotate=90] {\scriptsize $10^\ee$};
 };
 
 %Tracé des traits verticaux tous les deux millimètres
@@ -59,10 +59,6 @@
 \foreach \y in{0,1,...,\xmax}{
     \draw[gray,line width=0.2pt] (\y,\ymin) -- (\y,\ymax);
 }
-%tracé encore plus épais tous les 5 cm
-%\foreach \y in{0,5,...,\xmax}{
-%    \draw[gray,thick] (\y,\ymin) -- (\y,\ymax);
-%}
      \fill (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
      \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
      \fill (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;

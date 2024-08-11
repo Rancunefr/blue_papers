@@ -25,30 +25,19 @@
 \ADD{\nbdec}{-1}{\nbdectranslate}
 %Tracé de la grille principale
 \foreach \ee in{0,1,...,\nbdectranslate}{
-    %Jusqu'à la moitié, on trace tous les dixièmes
-    \foreach \x in {1.1,1.2,...,5.0}{
-	  \draw[lightgray,line width=0.1pt] (\xmin,{(log10(\x)+\ee)*\heighta}) -- (\xmax,{(log10(\x)+\ee)*\heighta});
-    };
-    %Après, on trace tous les cinquièmes sinon les traits sont trop rapprochés
-    \foreach \x in {5.2,5.4,...,9.8}{
-	    \draw[lightgray,line width=0.1pt] (\xmin,{(log10(\x)+\ee)*\heighta}) -- (\xmax,{(log10(\x)+\ee)*\heighta});
-    };    
-};
-
-\foreach \ee in{0,1,...,\nbdectranslate}{
     %Tracé de tous les traits correspondant aux unités
     \foreach \x in {1,2,...,10}{
 	    \draw[gray,line width=0.2pt] (\xmin,{(log10(\x)+\ee)*\heighta}) -- (\xmax,{(log10(\x)+\ee)*\heighta});
     };
     %tracé de la légende à côté des axes
     \foreach \x in {2,...,9}{
-    	    \coordinate (legende) at (\xmax,{(log10(\x)+\ee)*\heighta});
-	    \node at (legende) [right] {\tiny \x};
+    	    \coordinate (legende) at (\xmax+0.2,{(log10(\x)+\ee)*\heighta-0.2});
+	    \node at (legende) [right, rotate=90] {\tiny \x};
     };    
 };
 %tracé de la légende pour les puissances de 10
 \foreach \ee in{0,1,...,\nbdec}{
-    \node at (\xmax,{\ee*\heighta}) [right] {\scriptsize $10^\ee$};
+    \node at (\xmax+0.2,{\ee*\heighta-0.3}) [right, rotate=90] {\scriptsize $10^\ee$};
 };
 
 %Tracé des traits verticaux tous les deux millimètres
@@ -59,10 +48,6 @@
 \foreach \y in{0,1,...,\xmax}{
     \draw[gray,line width=0.2pt] (\y,\ymin) -- (\y,\ymax);
 }
-%tracé encore plus épais tous les 5 cm
-%\foreach \y in{0,5,...,\xmax}{
-%    \draw[gray,thick] (\y,\ymin) -- (\y,\ymax);
-%}
      \fill (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
      \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
      \fill (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;
