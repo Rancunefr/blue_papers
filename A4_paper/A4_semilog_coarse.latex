@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+\pagenumbering{gobble}
+\usepackage[a4paper,
+            hmargin=7mm,
+            vmargin=7mm,
+            headheight=0mm,
+            headsep=0mm,
+            marginparwidth=0mm,
+            marginparsep=0mm,
+            bindingoffset=10mm,
+            ]{geometry}  
+\usepackage{tikz}
+\usetikzlibrary{calc,fit,intersections,shapes,calc}
+\usepackage{calculator}
+\begin{document} 
+\pagestyle{empty}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+%Nombre de décades
+\def\nbdec{5} 
+%surface d'affichage
+\def\xmin{0} \def\xmax{18} \def\ymin{0} \def\ymax{26.5}
+\ADD{\ymax}{-\ymin}{\height}
+\DIVIDE{\height}{\nbdec}{\heighta}    
+\ADD{\nbdec}{-1}{\nbdectranslate}
+%Tracé de la grille principale
+\foreach \ee in{0,1,...,\nbdectranslate}{
+    %Jusqu'à la moitié, on trace tous les dixièmes
+%    \foreach \x in {1.1,1.2,...,5.0}{
+%	  \draw[lightgray,line width=0.1pt] (\xmin,{(log10(\x)+\ee)*\heighta}) -- (\xmax,{(log10(\x)+\ee)*\heighta});
+%    };
+    %Après, on trace tous les cinquièmes sinon les traits sont trop rapprochés
+%    \foreach \x in {5.2,5.4,...,9.8}{
+%	    \draw[lightgray,line width=0.1pt] (\xmin,{(log10(\x)+\ee)*\heighta}) -- (\xmax,{(log10(\x)+\ee)*\heighta});
+%    };    
+};
+
+\foreach \ee in{0,1,...,\nbdectranslate}{
+    %Tracé de tous les traits correspondant aux unités
+    \foreach \x in {1,2,...,10}{
+	    \draw[gray,line width=0.2pt] (\xmin,{(log10(\x)+\ee)*\heighta}) -- (\xmax,{(log10(\x)+\ee)*\heighta});
+    };
+    %tracé de la légende à côté des axes
+    \foreach \x in {2,...,9}{
+    	    \coordinate (legende) at (\xmax,{(log10(\x)+\ee)*\heighta});
+	    \node at (legende) [right] {\tiny \x};
+    };    
+};
+%tracé de la légende pour les puissances de 10
+\foreach \ee in{0,1,...,\nbdec}{
+    \node at (\xmax,{\ee*\heighta}) [right] {\scriptsize $10^\ee$};
+};
+
+%Tracé des traits verticaux tous les deux millimètres
+\foreach \y in{0.1,0.2,...,\xmax}{
+    \draw[lightgray,line width=0.1pt] (\y,\ymin) -- (\y,\ymax);
+}
+%tracé plus épais tous les centimètres
+\foreach \y in{0,1,...,\xmax}{
+    \draw[gray,line width=0.2pt] (\y,\ymin) -- (\y,\ymax);
+}
+%tracé encore plus épais tous les 5 cm
+\foreach \y in{0,5,...,\xmax}{
+    \draw[gray,thick] (\y,\ymin) -- (\y,\ymax);
+}
+     \fill[blue] (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
+     \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
+     \fill[blue] (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;
+     \fill (17.5,27.5) -- (17.5,27) --(18,27) -- (18,27.5) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \draw (1,28) -- (17.5,28) -- (17.5,27) -- 
+           (1,27) -- cycle;
+     \draw (13.5,28) -- (13.5,27) ;
+\end{tikzpicture}
+\end{document} 
