@@ -1,0 +1,46 @@
+\documentclass[twoside,a4paper]{book}
+\pagenumbering{gobble}
+\usepackage[a4paper,
+            hmargin=7mm,
+            vmargin=7mm,
+            headheight=0mm,
+            headsep=0mm,
+            marginparwidth=0mm,
+            marginparsep=0mm,
+            bindingoffset=10mm,
+            ]{geometry}  
+\usepackage{tikz}
+\begin{document}
+ \noindent
+ \begin{tikzpicture}
+     \fill[blue] (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
+     \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
+     \fill[blue] (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;
+     \fill (17.5,27.5) -- (17.5,27) --(18,27) -- (18,27.5) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill[blue] (18,0) -- (18.5,0) --(18.5,0.5) -- (18,0.5) -- cycle ;
+     \fill (17.5,1) -- (17.5,0.5) --(18,0.5) -- (18,1) -- cycle ;
+     % Dimensions du repere
+     \def\xmin{0} \def\xmax{18.5} \def\ymin{1} \def\ymax{25}
+     % Grilles
+     \draw [step=0.1cm,gray,ultra thin]  (\xmin,\ymin) grid (\xmax,\ymax);
+     \draw [step=0.5cm,gray, thin] (\xmin,\ymin) grid (\xmax,\ymax);
+     \draw [step=1cm,gray, thick] (\xmin,\ymin) grid (\xmax,\ymax);
+     \draw [step=5cm,gray,very thick] (\xmin,\ymin) grid (\xmax,\ymax);
+     \def\xmin{1} \def\xmax{17.5} \def\ymin{0} \def\ymax{1}
+     % Grilles
+     \draw [step=0.1cm,gray,ultra thin]  (\xmin,\ymin) grid (\xmax,\ymax);
+     \draw [step=0.5cm,gray, thin] (\xmin,\ymin) grid (\xmax,\ymax);
+     \draw [step=1cm,gray, thick] (\xmin,\ymin) grid (\xmax,\ymax);
+     \draw [step=5cm,gray,very thick] (\xmin,\ymin) grid (\xmax,\ymax);
+     % cadre
+     \draw (1,28) -- (17.5,28) -- (17.5,27) -- 
+           (18.5,27) -- (18.5, 25.5) -- (0,25.5) -- (0,27) -- (1,27) -- cycle;
+     \draw (13.5,28) -- (13.5,25.5) ;
+     \draw[black,very thick] (0,1) -- (0,25) -- (18.5,25) -- (18.5,1) -- (17.5,1) --
+           (17.5,0) -- (1,0) -- (1,1) -- cycle ;
+ \end{tikzpicture}
+\end{document}
