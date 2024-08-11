@@ -1,0 +1,63 @@
+\documentclass[twoside,a4paper]{book}
+\pagenumbering{gobble}
+\usepackage[a4paper,
+            hmargin=7mm,
+            vmargin=7mm,
+            headheight=0mm,
+            headsep=0mm,
+            marginparwidth=0mm,
+            marginparsep=0mm,
+            bindingoffset=10mm,
+            ]{geometry}  
+\usepackage{tikz}
+\usetikzlibrary{calc,fit,intersections,shapes,calc}
+\usepackage{calculator}
+\begin{document}
+ \noindent
+ \begin{tikzpicture}
+     \fill[blue] (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
+     \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
+     \fill[blue] (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;
+     \fill (17.5,27.5) -- (17.5,27) --(18,27) -- (18,27.5) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill[blue] (18,0) -- (18.5,0) --(18.5,0.5) -- (18,0.5) -- cycle ;
+     \fill (17.5,1) -- (17.5,0.5) --(18,0.5) -- (18,1) -- cycle ;
+     \draw (1,28) -- (17.5,28) -- (17.5,27) -- 
+           (18.5,27) -- (18.5, 26.5) -- (0,26.5) -- (0,27) -- (1,27) -- cycle;
+     \draw (13.5,28) -- (13.5,26.5) ;
+     \draw (0,1) -- (0,26) -- (18.5,26) -- (18.5,1) -- (17.5,1) --
+           (17.5,0) -- (1,0) -- (1,1) -- cycle ;
+     \coordinate (O) at (9.25,13);
+     \coordinate (A) at ($(O)+(90:9.5)$);
+     \coordinate (B) at ($(O)+(210:9.5)$);
+     \coordinate (C) at ($(O)+(-30:9.5)$);
+     \draw ({A}) -- ({B}) ;
+     \draw ({A}) -- ({C}) ;
+     \draw ({C}) -- ({B}) ;
+    
+     \foreach \l in {0,10,...,90} {
+     \foreach \d in {1,...,9} {
+        \draw[gray,thin] (${(\l+\d)/100}*(A)+{(100-(\l+\d))/100}*(B)$) -- 
+              (${(\l+\d)/100}*(A)+{(100-(\l+\d))/100}*(C)$) ;
+        \draw[gray,thin] (${(\l+\d)/100}*(A)+{(100-(\l+\d))/100}*(B)$) -- 
+              (${(\l+\d)/100}*(C)+{(100-(\l+\d))/100}*(B)$) ;
+        \draw[gray,thin] (${(\l+\d)/100}*(A)+{(100-(\l+\d))/100}*(C)$) -- 
+              (${(\l+\d)/100}*(B)+{(100-(\l+\d))/100}*(C)$) ;
+    }
+    \draw[thick,black] (${\l/100}*(A)+{(100-\l)/100}*(B)$) -- 
+          (${\l/100}*(A)+{(100-\l)/100}*(C)$) ;
+    \draw[thick,black] (${\l/100}*(A)+{(100-\l)/100}*(B)$) -- 
+          (${\l/100}*(C)+{(100-\l)/100}*(B)$) ;
+    \draw[thick,black] (${\l/100}*(A)+{(100-\l)/100}*(C)$) -- 
+          (${\l/100}*(B)+{(100-\l)/100}*(C)$) ;
+    }
+    \foreach \l in {0,10,...,100} {
+        \node  at (${\l/100}*(A)+{(100-\l)/100}*(B)$) [left] {$\l$};
+        \node  at (${\l/100}*(C)+{(100-\l)/100}*(A)$) [right] {$\l$};
+        \node  at (${\l/100}*(B)+{(100-\l)/100}*(C) - (0,0.3)$) {$\l$};
+   }
+ \end{tikzpicture}
+\end{document}
