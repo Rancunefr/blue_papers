@@ -37,7 +37,7 @@
      \draw (0,1) -- (0,26) -- (18.5,26) -- (18.5,1) -- (17.5,1) --
            (17.5,0) -- (1,0) -- (1,1) -- cycle ;
 
-\begin{scope}[scale=0.8,xshift=2.5cm,yshift=5cm]
+\begin{scope}[scale=0.8,xshift=2.5cm,yshift=7cm]
 
     \begin{polaraxis}[
                       rotate=180,
