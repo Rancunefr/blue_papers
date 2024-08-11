@@ -1,0 +1,41 @@
+\documentclass[twoside,a4paper]{book}
+\pagenumbering{gobble}
+\usepackage[a4paper,
+            hmargin=7mm,
+            vmargin=7mm,
+            headheight=0mm,
+            headsep=0mm,
+            marginparwidth=0mm,
+            marginparsep=0mm,
+            bindingoffset=10mm,
+            ]{geometry}  
+\usepackage{tikz}
+\begin{document}
+ \noindent
+ \begin{tikzpicture}
+     \fill[blue] (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
+     \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
+     \fill[blue] (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;
+     \fill (17.5,27.5) -- (17.5,27) --(18,27) -- (18,27.5) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill[blue] (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill[blue] (18,0) -- (18.5,0) --(18.5,0.5) -- (18,0.5) -- cycle ;
+     \fill (17.5,1) -- (17.5,0.5) --(18,0.5) -- (18,1) -- cycle ;
+     \draw (1,28) -- (17.5,28) -- (17.5,27) -- 
+           (18.5,27) -- (18.5, 26.5) -- (0,26.5) -- (0,27) -- (1,27) -- cycle;
+     \draw (13.5,28) -- (13.5,26.5) ;
+     \draw (0,1) -- (0,26) -- (18.5,26) -- (18.5,1) -- (17.5,1) --
+           (17.5,0) -- (1,0) -- (1,1) -- cycle ;
+     \draw (2.5,0) -- (2.5,26) ;
+    \foreach \x in {6,...,36}
+    { \draw[gray!75] (0.5*\x,1) -- ( 0.5*\x,26); }       
+    \foreach \y in {3,...,51}
+    { \draw[gray!75] (2.5,0.5*\y) -- ( 18.5,0.5*\y); }       
+    \foreach \x in {6,...,34}
+    { \draw[gray!75] (0.5*\x,1) -- ( 0.5*\x,0); }       
+    \foreach \y in {1,...,2}
+    { \draw[gray!75] (2.5,0.5*\y) -- ( 18.5,0.5*\y); }       
+ \end{tikzpicture}
+\end{document}
