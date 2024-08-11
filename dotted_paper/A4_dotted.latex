@@ -9,8 +9,6 @@
   \begin{tikzpicture}[scale=.5]
     \foreach \x in {0,...,41}
     \foreach \y in {0,...,57}
-    {
-  \fill[gray!75] (\x,\y) circle (0.06cm);
-    }       
+    { \fill[gray!75] (\x,\y) circle (0.06cm); }       
   \end{tikzpicture}
 \end{document}
