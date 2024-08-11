@@ -1,0 +1,118 @@
+\documentclass[twoside,a4paper]{book}
+\pagenumbering{gobble}
+\usepackage{pgfplots}
+\usepackage[a4paper,
+            hmargin=7mm,
+            vmargin=7mm,
+            headheight=0mm,
+            headsep=0mm,
+            marginparwidth=0mm,
+            marginparsep=0mm,
+            bindingoffset=10mm,
+            ]{geometry}  
+\usepackage{tikz}
+\usepackage{amsmath} 
+\usepackage{steinmetz}
+\usepgfplotslibrary{smithchart}
+\usepgfplotslibrary{polar}   
+\usepackage{siunitx} 
+\pgfplotsset{compat=1.13}
+
+\begin{document}
+\noindent
+\begin{tikzpicture}
+     \fill (0,28) -- (0.5,28) --(0.5,27.5) -- (0,27.5) -- cycle ;
+     \fill (0.5,27) -- (1,27) -- (1,27.5) -- (0.5,27.5) -- cycle ;
+     \fill (18,28) -- (18.5,28) --(18.5,27.5) -- (18,27.5) -- cycle ;
+     \fill (17.5,27.5) -- (17.5,27) --(18,27) -- (18,27.5) -- cycle ;
+     \fill (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill (0,0) -- (0.5,0) --(0.5,0.5) -- (0,0.5) -- cycle ;
+     \fill (0.5,0.5) -- (1,0.5) --(1,1) -- (0.5,1) -- cycle ;
+     \fill (18,0) -- (18.5,0) --(18.5,0.5) -- (18,0.5) -- cycle ;
+     \fill (17.5,1) -- (17.5,0.5) --(18,0.5) -- (18,1) -- cycle ;
+     \draw (1,28) -- (17.5,28) -- (17.5,27) -- 
+           (18.5,27) -- (18.5, 26.5) -- (0,26.5) -- (0,27) -- (1,27) -- cycle;
+     \draw (13.5,28) -- (13.5,26.5) ;
+     \draw (0,1) -- (0,26) -- (18.5,26) -- (18.5,1) -- (17.5,1) --
+           (17.5,0) -- (1,0) -- (1,1) -- cycle ;
+
+\begin{scope}[scale=0.8,xshift=2.5cm,yshift=7cm]
+
+    \begin{polaraxis}[
+                      rotate=180,
+                      width=23cm,
+                      xshift=1.5cm, 
+                      yshift=1.5cm,
+                      xticklabel style={
+                          sloped like x axis={%
+                              execute for upside down={\tikzset{anchor=south}},
+                              reset nontranslations=false
+                          },
+                          anchor=north,
+                      },
+                      xticklabel={\small\pgfmathparse{0.5-\tick/720}\pgfmathprintnumber[fixed,precision=3]{\pgfmathresult}$\lambda$},
+                      xtick align=center,
+                      xtick={0,18,...,360},
+                      grid=none,
+                      axis y line = none,
+                      minor x tick num={4},
+                      ymax=1,
+                     ]   
+   \end{polaraxis}
+    \begin{polaraxis}[
+                      rotate=180,
+                      width=22cm,
+                      xshift=1cm, 
+                      yshift=1cm,
+                      xticklabel style={
+                          sloped like x axis={%
+                              execute for upside down={\tikzset{anchor=south}},
+                              reset nontranslations=false
+                          },
+                          anchor=north,
+                      },
+                      xticklabel={\small\pgfmathparse{\tick/720}\pgfmathprintnumber[fixed,precision=3]{\pgfmathresult}$\lambda$},
+                      xtick align=center,
+                      xtick={0,18,...,360},
+                      grid=none,
+                      axis y line = none,
+                      minor x tick num={4},
+                      ymax=1,
+                     ]    
+
+    \end{polaraxis}
+    \begin{polaraxis}[
+                      width=21cm,
+                      xshift=-0.5cm, 
+                      yshift=-0.5cm,
+                      xticklabel style={
+                          sloped like x axis={%
+                              execute for upside down={\tikzset{anchor=north}},
+                              reset nontranslations=false
+                          },
+                          anchor=south,
+                      },
+                      xticklabel={\small\pgfmathprintnumber{\tick}\si{\degree}},
+                      xtick align=center,
+                      grid=none,
+                      axis y line = none,
+                     ]    
+   \end{polaraxis}
+   \begin{smithchart}[
+            width=20cm,
+            ticks=none,
+            grid style={red!50!white},
+            smithchart mirrored,
+            few smithchart ticks,
+    ]
+   \end{smithchart}
+\begin{smithchart}[
+	show origin,
+    grid style={blue!50!white},
+	width=20cm ]
+\end{smithchart}
+
+\end{scope}
+\end{tikzpicture} 
+\end{document}
